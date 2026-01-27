@@ -7,7 +7,7 @@
     <title>Dhirah | Elite Student Living</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Playfair+Display:italic,wght@700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Playfair+Display:italic,wght@700&display=swap"
         rel="stylesheet">
     <style>
         body {
@@ -110,11 +110,6 @@
             opacity: 0;
             transform: scale(0.98);
         }
-
-        /* Custom color for navigation links */
-        .nav-link-color {
-            color: #a0a0a0;
-        }
     </style>
 </head>
 
@@ -123,19 +118,19 @@
     <div class="fixed top-[-10%] left-[-10%] w-[60%] h-[60%] bg-orange-600/10 rounded-full blur-[120px] pointer-events-none animate-float"></div>
     <div class="fixed bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-blue-600/5 rounded-full blur-[120px] pointer-events-none animate-float-delayed"></div>
 
-    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 ease-in-out bg-transparent py-6">
-        <div class="max-w-7xl mx-auto flex items-center justify-between px-8 md:px-16">
+    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 ease-in-out bg-transparent backdrop-blur-md py-6 md:py-8">
+        <div class="max-w-7xl mx-auto flex items-center justify-between px-6 md:px-12">
             <a href="#" class="flex items-center">
                 <img src="./dhirah-logo.png" 
                      alt="Dhirah Logo" 
                      class="h-10 md:h-12 object-contain filter brightness-0 invert">
             </a>
 
-            <div class="hidden md:flex items-center gap-10 text-[15px] font-bold nav-link-color">
-                <a href="#aboutus" class="hover:text-white transition-colors">About Us</a>
-                <a href="#pathways" class="hover:text-white transition-colors">What We Do</a>
-                <a href="#voices" class="hover:text-white transition-colors">Our Alumni</a>
-                <a href="#" class="hover:text-white transition-colors">Register</a>
+            <div class="hidden md:flex items-center gap-12 text-[20px] font-bold text-[#9ca3af] tracking-wide">
+                <a href="#aboutus" class="hover:text-white transition-colors duration-300">About Us</a>
+                <a href="#pathways" class="hover:text-white transition-colors duration-300">What We Do</a>
+                <a href="#voices" class="hover:text-white transition-colors duration-300">Our Alumni</a>
+                <a href="#" class="hover:text-white transition-colors duration-300">Register</a>
             </div>
 
             <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none p-2">
@@ -146,11 +141,11 @@
         </div>
 
         <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-black border-t border-white/10 shadow-2xl">
-            <div class="flex flex-col items-start pl-6 py-4 gap-4 text-[16px] font-bold nav-link-color">
+            <div class="flex flex-col items-start pl-8 py-8 gap-6 text-[18px] font-bold text-[#9ca3af]">
                 <a href="#aboutus" class="hover:text-white transition-colors w-full text-left" onclick="toggleMobileMenu()">About Us</a>
                 <a href="#pathways" class="hover:text-white transition-colors w-full text-left" onclick="toggleMobileMenu()">What We Do</a>
                 <a href="#voices" class="hover:text-white transition-colors w-full text-left" onclick="toggleMobileMenu()">Our Alumni</a>
-                <a href="#" class="hover:text-white transition-colors w-full text-left" onclick="toggleMobileMenu()">Register</a>
+                <a href="#" class="hover:text-white transition-colors w-full text-left text-white" onclick="toggleMobileMenu()">Register</a>
             </div>
         </div>
     </nav>
@@ -426,7 +421,7 @@
         </div>
     </section>
 
-    <footer class="bg-black py-16 border-t border-white/5">
+     <footer class="bg-black py-16 border-t border-white/5">
         <div class="max-w-7xl mx-auto flex flex-col items-center justify-center gap-10">
             
             <div class="flex items-center gap-8">
@@ -471,15 +466,26 @@
         // Hamburger Button Listener
         document.getElementById('mobile-menu-btn').addEventListener('click', toggleMobileMenu);
 
-        // Scroll Header Logic
+        // Scroll Header Logic - MODIFIED: Removed bg-black toggle
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
-                navbar.classList.remove('bg-transparent', 'py-6');
-                navbar.classList.add('bg-black', 'shadow-lg', 'py-4');
+                // Remove initial large padding
+                navbar.classList.remove('py-6');
+                navbar.classList.remove('md:py-8');
+                
+                // Add smaller padding and shadow, BUT NO BACKGROUND COLOR CHANGE
+                navbar.classList.add('shadow-lg', 'py-4');
+                
+                // Ensure bg-transparent stays (redundant but safe)
+                navbar.classList.add('bg-transparent');
             } else {
+                // Revert to original state
                 navbar.classList.add('bg-transparent', 'py-6');
-                navbar.classList.remove('bg-black', 'shadow-lg', 'py-4');
+                navbar.classList.add('md:py-8');
+                
+                // Remove scroll effects
+                navbar.classList.remove('shadow-lg', 'py-4');
             }
         });
 
