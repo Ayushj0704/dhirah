@@ -132,6 +132,21 @@
                 <a href="#voices" class="hover:text-white transition-colors duration-300">Our Alumni</a>
                 <a href="#" class="hover:text-white transition-colors duration-300">Register</a>
             </div>
+
+            <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none p-2">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-black border-t border-white/10 shadow-2xl">
+            <div class="flex flex-col items-center py-8 gap-8 text-[18px] font-bold text-gray-400">
+                <a href="#aboutus" class="hover:text-white transition-colors duration-300 w-full text-center py-2" onclick="toggleMobileMenu()">About Us</a>
+                <a href="#pathways" class="hover:text-white transition-colors duration-300 w-full text-center py-2" onclick="toggleMobileMenu()">What We Do</a>
+                <a href="#voices" class="hover:text-white transition-colors duration-300 w-full text-center py-2" onclick="toggleMobileMenu()">Our Alumni</a>
+                <a href="#" class="hover:text-white transition-colors duration-300 w-full text-center py-2 text-white" onclick="toggleMobileMenu()">Register</a>
+            </div>
         </div>
     </nav>
 
@@ -407,9 +422,13 @@
     </section>
 
     <footer class="bg-black py-16 border-t border-white/5">
-        <div class="max-w-7xl mx-auto flex flex-col items-center justify-center gap-8">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 px-6">
             
-            <div class="flex items-center gap-8">
+            <div class="text-white text-xs font-bold tracking-widest uppercase order-2 md:order-1">
+                &copy; 2026 Dhirah
+            </div>
+
+            <div class="flex items-center gap-8 order-1 md:order-2">
                 <a href="#" class="text-white hover:text-gray-400 transition-all transform hover:scale-110 hover:-translate-y-1">
                     <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M7.6,4A3.6,3.6 0 0,0 4,7.6V16.4C4,18.39 5.61,20 7.6,20H16.4A3.6,3.6 0 0,0 20,16.4V7.6C20,5.61 18.39,4 16.4,4H7.6M17.25,5.5A1.25,1.25 0 0,1 18.5,6.75A1.25,1.25 0 0,1 17.25,8A1.25,1.25 0 0,1 16,6.75A1.25,1.25 0 0,1 17.25,5.5M12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9Z" />
@@ -434,14 +453,19 @@
                      </svg>
                 </a>
             </div>
-
-            <div class="text-white text-xs font-bold tracking-widest uppercase">
-                &copy; 2026 Dhirah
-            </div>
         </div>
     </footer>
 
     <script>
+        // Toggle Mobile Menu
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Hamburger Button Listener
+        document.getElementById('mobile-menu-btn').addEventListener('click', toggleMobileMenu);
+
         // Scroll Header Logic
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
