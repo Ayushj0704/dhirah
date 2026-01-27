@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dhirah | Elite Student Living</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Playfair+Display:italic,wght@700&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #050505;
+            color: white;
+            scroll-behavior: smooth;
+        }
+
+        .serif-italic {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* Floating Animation for Background Blobs */
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0, 0) scale(1); }
+        }
+
+        .animate-float {
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .animate-float-delayed {
+            animation: float 25s infinite ease-in-out reverse;
+        }
+
+        /* Scroll Reveal Utility */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .bento-item {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .bento-item:hover {
+            border-color: rgba(234, 88, 12, 0.4);
+            transform: translateY(-8px) scale(1.01);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Voice Wave Animation */
+        @keyframes wave {
+            0%, 100% { height: 4px; opacity: 0.4; }
+            50% { height: 24px; opacity: 1; }
+        }
+
+        .wave-bar {
+            width: 4px;
+            background: linear-gradient(to top, #ea580c, #fb923c);
+            border-radius: 4px;
+            animation: wave 1.2s infinite ease-in-out;
+        }
+
+        /* Testimonial Transitions */
+        .testimonial-container {
+            position: relative;
+            min-height: 280px;
+        }
+
+        .testimonial-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .testimonial-slide.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        #student-image {
+            transition: opacity 0.4s ease-in-out, transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .img-fade {
+            opacity: 0;
+            transform: scale(0.98);
+        }
+    </style>
+</head>
+
+<body class="overflow-x-hidden">
+
+    <div class="fixed top-[-10%] left-[-10%] w-[60%] h-[60%] bg-orange-600/10 rounded-full blur-[120px] pointer-events-none animate-float"></div>
+    <div class="fixed bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-blue-600/5 rounded-full blur-[120px] pointer-events-none animate-float-delayed"></div>
+
+    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 ease-in-out bg-transparent py-6">
+        <div class="max-w-7xl mx-auto flex items-center justify-between px-8 md:px-16">
+            <a href="#" class="flex items-center">
+                <img src="./dhirah-logo.png" 
+                     alt="Dhirah Logo" 
+                     class="h-10 md:h-12 object-contain filter brightness-0 invert">
+            </a>
+
+            <div class="hidden md:flex items-center gap-10 text-[16px] font-bold text-gray-400">
+                <a href="#aboutus" class="hover:text-white transition-colors duration-300">About Us</a>
+                <a href="#pathways" class="hover:text-white transition-colors duration-300">What We Do</a>
+                <a href="#voices" class="hover:text-white transition-colors duration-300">Our Alumni</a>
+                <a href="#" class="hover:text-white transition-colors duration-300">Register</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="relative pt-48 pb-32 px-6 text-center">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-6xl md:text-8xl font-black tracking-tighter mb-8 leading-[0.9] reveal">
+                Elevated Living.<br>
+                <span class="serif-italic text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-orange-200">Elite Results.</span>
+            </h1>
+            <p class="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed reveal">
+                The premier sanctuary for high-achieving students. Strategically positioned for the ultimate campus experience.
+            </p>
+        </div>
+    </header>
+
+    <section id="aboutus" class="py-24 px-6 relative bg-[#080808]">
+        <div class="max-w-6xl mx-auto reveal">
+            <div class="glass-card rounded-[3rem] p-12 md:p-20 relative overflow-hidden shadow-2xl">
+                <div class="grid md:grid-cols-2 gap-16 items-center">
+                    <div class="relative group">
+                        <div class="absolute inset-0 bg-orange-500 rounded-3xl blur-3xl opacity-10"></div>
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop"
+                            alt="Founder Raghav Soni"
+                            class="rounded-3xl border border-white/10 relative z-10 w-full object-cover aspect-4/5 grayscale group-hover:grayscale-0 transition-all duration-700 hover:scale-[1.02]">
+                        <div class="absolute -bottom-6 -right-6 p-8 bg-white rounded-2xl shadow-2xl z-20 hidden lg:block transform group-hover:rotate-6 transition-transform">
+                            <p class="text-black text-[10px] font-bold uppercase tracking-widest mb-1">Founder Of DYH</p>
+                            <p class="text-2xl font-black text-black uppercase">Raghav Soni</p>
+                        </div>
+                    </div>
+                    <div>
+                        <svg class="text-orange-500 w-12 h-12 mb-8 opacity-40 animate-bounce" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19C19.5523 16 20 15.5523 20 15V9C20 8.44772 19.5523 8 19 8H16.017C14.9124 8 14.017 7.10457 14.017 6V3L22 3V15C22 16.6569 20.6569 18 19 18H17.017L17.017 21H14.017ZM2.017 21L2.017 18C2.017 16.8954 2.91243 16 4.017 16H7C7.55228 16 8 15.5523 8 15V9C8 8.44772 7.55228 8 7 8H4.017C2.91243 8 2.017 7.10457 2.017 6V3L10 3V15C10 16.6569 8.65685 18 7 18H5.017L5.017 21H2.017Z" />
+                        </svg>
+                        <h2 class="text-4xl font-bold mb-8 leading-tight italic serif-italic">"We engineer environments for focus, not just living."</h2>
+                        <p class="text-gray-400 text-lg leading-relaxed mb-10">
+                            Dhirah was envisioned as more than just a place to stay. It is a space where young individuals can slow down, reflect deeply, and reconnect with values that truly matter. Through simple living, spiritual grounding, and conscious community, we nurture clarity of thought and higher purpose in every resident.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="amenities" class="py-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-20 reveal">
+                <span class="text-orange-500 font-bold tracking-[0.4em] uppercase text-xs mb-4 block">We manage the distractions, so you can focus on your goals.</span>
+                <h2 class="text-5xl md:text-6xl font-bold tracking-tighter serif-italic italic">Everything You'd Need.</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+                <div class="md:col-span-8 bento-item reveal bg-gradient-to-br from-[#111] to-[#080808] border border-white/5 rounded-[3rem] p-12 overflow-hidden relative group">
+                    <div class="absolute top-0 right-0 p-12 opacity-5 group-hover:opacity-10 transition-opacity">
+                        <svg class="w-64 h-64" fill="currentColor" viewBox="0 0 24 24"><path d="M11 2L6 7l1.41 1.41L11 4.83V21h2V4.83l3.59 3.58L18 7l-5-5h-2z" /></svg>
+                    </div>
+                    <div class="relative z-10 flex flex-col justify-between h-full">
+                        <div>
+                            <div class="w-16 h-16 bg-orange-600 text-white rounded-2xl flex items-center justify-center mb-8 shadow-xl group-hover:rotate-12 transition-transform">
+                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
+                            </div>
+                            <h3 class="text-4xl font-bold mb-4">Designer Modular Kitchen</h3>
+                            <p class="text-gray-400 text-lg leading-relaxed max-w-md">High-performance induction, sleek storage, and quartz countertops for the modern student.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="md:col-span-4 bento-item reveal bg-[#0A0A0A] border border-white/5 rounded-[2.5rem] p-10 group">
+                    <div class="w-14 h-14 bg-blue-500/10 text-blue-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 00-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" /></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Pure RO System</h3>
+                    <p class="text-gray-500 text-sm">Medical-grade multi-stage purification. Fuel for your intellect.</p>
+                </div>
+
+                <div class="md:col-span-4 bento-item reveal bg-[#0A0A0A] border border-white/5 rounded-[2.5rem] p-10 group">
+                    <div class="w-14 h-14 bg-cyan-500/10 text-cyan-500 rounded-2xl flex items-center justify-center mb-6 group-hover:rotate-45 transition-transform">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Climate Control</h3>
+                    <p class="text-gray-500 text-sm">Full AC in all units. Keep your cool when pressure rises.</p>
+                </div>
+
+                <div class="md:col-span-4 bento-item reveal bg-[#0A0A0A] border border-white/5 rounded-[2.5rem] p-10 group">
+                    <div class="w-14 h-14 bg-green-500/10 text-green-500 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14 0M8.5 16a6 6 0 0 1 7 0M12 20h.01" /></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Gigabit WiFi</h3>
+                    <p class="text-gray-500 text-sm">Zero-lag connectivity for research, gaming, and collaboration.</p>
+                </div>
+
+                <div class="md:col-span-4 bento-item reveal bg-[#0A0A0A] border border-white/5 rounded-[2.5rem] p-10 group">
+                    <div class="w-14 h-14 bg-indigo-500/10 text-indigo-500 rounded-2xl flex items-center justify-center mb-6 group-hover:-rotate-12 transition-transform">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Washing Machine</h3>
+                    <p class="text-gray-500 text-sm">Professional care ensuring your wardrobe is sharp.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pathways" class="py-32 px-6 bg-[#050505] border-y border-white/5">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-24 reveal">
+                <span class="text-orange-500 font-bold tracking-[0.4em] uppercase text-xs mb-4 block">The Pillars of Excellence</span>
+                <h2 class="text-4xl md:text-6xl font-black mb-6 tracking-tight">The <span class="italic text-orange-500 serif-italic">Dhirah Signature</span></h2>
+                <p class="text-gray-500 text-lg max-w-2xl mx-auto">Cultivating intellectual depth and collective growth through intentional environment design.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="p-10 rounded-[3rem] bg-[#0A0A0A] border border-white/5 hover:border-orange-500/40 transition-all group reveal shadow-xl">
+                    <div class="w-16 h-16 bg-orange-500/10 text-orange-500 rounded-2xl flex items-center justify-center mb-8 group-hover:rotate-12 transition-transform">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 italic serif-italic">Career Ops</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Direct access to CV clinics and Tier-1 firm alumni networking events. Build your future today.</p>
+                </div>
+
+                <div class="p-10 rounded-[3rem] bg-[#0A0A0A] border border-white/5 hover:border-red-500/40 transition-all group reveal shadow-xl">
+                    <div class="w-16 h-16 bg-red-500/10 text-red-500 rounded-2xl flex items-center justify-center mb-8 group-hover:-rotate-12 transition-transform">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 italic serif-italic">Health Sanctuary</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">24/7 medical monitoring and on-call assistance. Peak health equals peak academic performance.</p>
+                </div>
+
+                <div class="p-10 rounded-[3rem] bg-[#0A0A0A] border border-white/5 hover:border-blue-500/40 transition-all group reveal shadow-xl">
+                    <div class="w-16 h-16 bg-blue-500/10 text-blue-500 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 italic serif-italic">Elite Circle</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Selective entry ensures you live with driven peers. Iron sharpens iron in this curated community.</p>
+                </div>
+
+                <div class="p-10 rounded-[3rem] bg-[#0A0A0A] border border-white/5 hover:border-emerald-500/40 transition-all group reveal shadow-xl">
+                    <div class="w-16 h-16 bg-emerald-500/10 text-emerald-500 rounded-2xl flex items-center justify-center mb-8 group-hover:rotate-6 transition-transform">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 italic serif-italic">Personal Care</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">The founder is directly involved in hygiene, food quality, and overall well-being. Frictionless living managed at the highest level.</p>
+                </div>
+
+                <div class="p-10 rounded-[3rem] bg-[#0A0A0A] border border-white/5 hover:border-amber-500/40 transition-all group reveal shadow-xl">
+                    <div class="w-16 h-16 bg-amber-500/10 text-amber-500 rounded-2xl flex items-center justify-center mb-8 group-hover:-rotate-6 transition-transform">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 italic serif-italic text-balance">Simple Living, High Thinking</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Focusing on what matters. A clutter-free, intentional environment that encourages profound intellectual depth and clarity.</p>
+                </div>
+
+                <div class="p-10 rounded-[3rem] bg-[#0A0A0A] border border-white/5 hover:border-purple-500/40 transition-all group reveal shadow-xl">
+                    <div class="w-16 h-16 bg-purple-500/10 text-purple-500 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-105 transition-transform">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 italic serif-italic">Family Environment</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">We aren’t a commercial space. We are a brotherhood that eats, studies, and grows together. True communal support.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="voices" class="py-32 px-6 bg-[#050505] overflow-hidden">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-20 items-center">
+                <div class="reveal">
+                    <span class="text-orange-500 font-bold tracking-[0.4em] uppercase text-xs mb-4 block">Student Testimonials</span>
+                    <h2 class="text-5xl md:text-7xl font-bold tracking-tighter mb-10 leading-[0.9]">
+                        The Sound of <br> <span class="serif-italic italic text-orange-200">Excellence.</span>
+                    </h2>
+
+                    <div class="flex items-end gap-1.5 h-12 mb-12">
+                        <div class="wave-bar" style="animation-delay: 0.1s"></div>
+                        <div class="wave-bar" style="animation-delay: 0.3s"></div>
+                        <div class="wave-bar" style="animation-delay: 0.2s"></div>
+                        <div class="wave-bar" style="animation-delay: 0.5s"></div>
+                        <div class="wave-bar" style="animation-delay: 0.4s"></div>
+                        <div class="wave-bar" style="animation-delay: 0.6s"></div>
+                        <div class="wave-bar" style="animation-delay: 0.2s"></div>
+                        <div class="wave-bar" style="animation-delay: 0.8s"></div>
+                    </div>
+
+                    <div id="testimonial-container" class="testimonial-container">
+                        <div class="testimonial-slide active" data-index="0" data-image="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=800&auto=format&fit=crop">
+                            <p class="text-3xl md:text-4xl serif-italic italic leading-snug mb-8 text-gray-200">
+                                "Dhirah isn't just a hostel; it’s an ecosystem. The proximity to campus gave me 2 extra hours daily for my research papers."
+                            </p>
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-full bg-orange-600 flex items-center justify-center font-bold text-black">AR</div>
+                                <div>
+                                    <p class="font-bold text-white uppercase tracking-widest text-xs">Ananya Rao</p>
+                                    <p class="text-gray-500 text-[10px] uppercase tracking-widest">Final Year Law Student</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-slide" data-index="1" data-image="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=800&auto=format&fit=crop">
+                            <p class="text-3xl md:text-4xl serif-italic italic leading-snug mb-8 text-gray-200">
+                                "The quiet hours and the modular kitchen made my prep for finals seamless. I found a brotherhood that shares my ambition at Dhirah."
+                            </p>
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center font-bold text-white">MK</div>
+                                <div>
+                                    <p class="font-bold text-white uppercase tracking-widest text-xs">Mukul Kapoor</p>
+                                    <p class="text-gray-500 text-[10px] uppercase tracking-widest">Competitive Exam Aspirant</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-slide" data-index="2" data-image="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=800&auto=format&fit=crop">
+                            <p class="text-3xl md:text-4xl serif-italic italic leading-snug mb-8 text-gray-200">
+                                "Having a founder like Raghav who personally checks on the hygiene standards is unheard of. It feels like home, but more focused."
+                            </p>
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-full bg-green-600 flex items-center justify-center font-bold text-white">SP</div>
+                                <div>
+                                    <p class="font-bold text-white uppercase tracking-widest text-xs">Siddharth P.</p>
+                                    <p class="text-gray-500 text-[10px] uppercase tracking-widest">MBA Candidate</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative reveal">
+                    <div class="absolute -top-10 -left-10 w-40 h-40 border border-orange-500/20 rounded-full animate-pulse"></div>
+                    <div class="glass-card rounded-[3rem] p-8 relative z-10 overflow-hidden">
+                        <img id="student-image"
+                            src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=800&auto=format&fit=crop"
+                            class="w-full aspect-square object-cover rounded-4xl grayscale group-hover:grayscale-0 transition-all duration-700"
+                            alt="Student Life at Dhirah">
+                        <div class="mt-8 flex justify-between items-center">
+                            <div class="flex gap-2">
+                                <button onclick="prevTestimonial()" class="w-12 h-12 border border-white/10 rounded-full flex items-center justify-center hover:bg-white hover:text-black transition-all">←</button>
+                                <button onclick="nextTestimonial()" class="w-12 h-12 border border-white/10 rounded-full flex items-center justify-center hover:bg-white hover:text-black transition-all">→</button>
+                            </div>
+                            <span class="text-[10px] font-bold tracking-[0.3em] text-gray-500">VOICE SELECTOR</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32 px-6 bg-[#0a0a0a] border-t border-white/5 relative overflow-hidden">
+        <div class="max-w-4xl mx-auto text-center reveal relative z-10">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6 tracking-tight">
+                Let's <span class="text-cyan-400">Talk</span>
+            </h2>
+            
+            <p class="text-gray-400 mb-16 max-w-xl mx-auto text-sm md:text-base leading-relaxed">
+                Interested in joining the DYH family? Reach out to us directly via call or email. 
+                We'd love to answer your questions and welcome you.
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-gradient-to-b from-[#1a1a1a] to-black border border-white/5 rounded-[2rem] p-12 flex flex-col items-center justify-center group hover:border-yellow-500/30 transition-all duration-500 shadow-2xl hover:shadow-yellow-900/10">
+                    <div class="w-14 h-14 rounded-full bg-yellow-500/10 flex items-center justify-center text-yellow-500 mb-6 group-hover:scale-110 group-hover:bg-yellow-500/20 transition-all duration-300">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.44-5.15-3.75-6.59-6.59l1.97-1.57c.26-.26.35-.65.24-1.01A11.36 11.36 0 009.18 4.35c-.2-.23-.48-.35-.77-.35H4.53c-.57 0-1.04.46-1.04 1.04C3.49 14.54 12.96 24 22.46 24c.58 0 1.04-.47 1.04-1.04v-3.88c0-.29-.13-.57-.35-.77a11.4 11.4 0 00-3.14-2.93z"/>
+                        </svg>
+                    </div>
+                    <p class="text-[10px] font-bold tracking-[0.2em] text-gray-500 uppercase mb-3 group-hover:text-gray-400 transition-colors">Call Us Anytime</p>
+                    <p class="text-2xl font-bold text-white tracking-tight group-hover:text-yellow-500 transition-colors cursor-pointer">+91 98765 43210</p>
+                </div>
+
+                <div class="bg-gradient-to-b from-[#1a1a1a] to-black border border-white/5 rounded-[2rem] p-12 flex flex-col items-center justify-center group hover:border-yellow-500/30 transition-all duration-500 shadow-2xl hover:shadow-yellow-900/10">
+                    <div class="w-14 h-14 rounded-full bg-yellow-500/10 flex items-center justify-center text-yellow-500 mb-6 group-hover:scale-110 group-hover:bg-yellow-500/20 transition-all duration-300">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    </div>
+                    <p class="text-[10px] font-bold tracking-[0.2em] text-gray-500 uppercase mb-3 group-hover:text-gray-400 transition-colors">Email Inquiries</p>
+                    <p class="text-2xl font-bold text-white tracking-tight group-hover:text-yellow-500 transition-colors cursor-pointer">hello@dhirah.org</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black py-16 border-t border-white/5">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 px-6">
+            
+            <div class="text-white text-xs font-bold tracking-widest uppercase order-2 md:order-1">
+                &copy; 2026 Dhirah
+            </div>
+
+            <div class="flex items-center gap-8 order-1 md:order-2">
+                <a href="#" class="text-white hover:text-gray-400 transition-all transform hover:scale-110 hover:-translate-y-1">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M7.6,4A3.6,3.6 0 0,0 4,7.6V16.4C4,18.39 5.61,20 7.6,20H16.4A3.6,3.6 0 0,0 20,16.4V7.6C20,5.61 18.39,4 16.4,4H7.6M17.25,5.5A1.25,1.25 0 0,1 18.5,6.75A1.25,1.25 0 0,1 17.25,8A1.25,1.25 0 0,1 16,6.75A1.25,1.25 0 0,1 17.25,5.5M12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9Z" />
+                    </svg>
+                </a>
+                
+                <a href="#" class="text-white hover:text-gray-400 transition-all transform hover:scale-110 hover:-translate-y-1">
+                     <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .533 5.333.533 12S5.867 24 12.48 24c3.44 0 6.04-1.133 8.16-3.293 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.133H12.48z"/>
+                     </svg>
+                </a>
+
+                <a href="#" class="text-white hover:text-gray-400 transition-all transform hover:scale-110 hover:-translate-y-1">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    </svg>
+                </a>
+                
+                <a href="#" class="text-white hover:text-gray-400 transition-all transform hover:scale-110 hover:-translate-y-1">
+                     <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                     </svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll Header Logic
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.remove('bg-transparent', 'py-6');
+                navbar.classList.add('bg-black', 'shadow-lg', 'py-4');
+            } else {
+                navbar.classList.add('bg-transparent', 'py-6');
+                navbar.classList.remove('bg-black', 'shadow-lg', 'py-4');
+            }
+        });
+
+        // Scroll Reveal Observer
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Testimonial Logic
+        let currentSlide = 0;
+        let autoTimer;
+        const slides = document.querySelectorAll('.testimonial-slide');
+        const imgEl = document.getElementById('student-image');
+
+        function startTimer() {
+            clearInterval(autoTimer);
+            autoTimer = setInterval(nextTestimonial, 8000);
+        }
+
+        function showSlide(index) {
+            imgEl.classList.add('img-fade');
+            setTimeout(() => {
+                slides.forEach(s => s.classList.remove('active'));
+                slides[index].classList.add('active');
+                if (slides[index].dataset.image) {
+                    imgEl.src = slides[index].dataset.image;
+                }
+                imgEl.classList.remove('img-fade');
+                currentSlide = index;
+            }, 350);
+            startTimer();
+        }
+
+        function nextTestimonial() {
+            let next = (currentSlide + 1) % slides.length;
+            showSlide(next);
+        }
+
+        function prevTestimonial() {
+            let prev = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(prev);
+        }
+
+        if (slides.length > 0) {
+            startTimer();
+        }
+    </script>
+</body>
+
+</html>
