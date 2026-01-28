@@ -110,6 +110,56 @@
             opacity: 0;
             transform: scale(0.98);
         }
+
+        /* --- NEW CONTACT STYLES ADDED HERE --- */
+        .dyh-contact-section {
+            background: linear-gradient(135deg, #1c1c1c, #2b2b2b);
+            padding-top: 70px;
+            padding-bottom: 70px;
+        }
+/* Contact Cards */
+        .dyh-contact-card {
+            background: radial-gradient(
+                circle at top,
+                rgba(255, 255, 255, 0.06),
+                rgba(0, 0, 0, 0.6)
+            );
+            /* CHANGE THIS LINE BELOW */
+            border-radius: 0px; /* 0px makes it perfectly square/plain. Use 8px for a tiny curve. */
+            /* --------------------- */
+            border-radius: 2rem;
+            padding: 3rem 2rem;
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .dyh-contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.6);
+            cursor: pointer;
+        }
+
+        .dyh-contact-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 1.5rem auto; /* Added margin-bottom */
+            background-color: rgba(255, 198, 0, 0.12);
+            color: #ffc600;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .dyh-contact-card:hover .dyh-contact-icon {
+            transform: scale(1.15);
+            box-shadow: 0 0 1.5rem rgba(255, 198, 0, 0.5);
+        }
     </style>
 </head>
 
@@ -118,7 +168,7 @@
     <div class="fixed top-[-10%] left-[-10%] w-[60%] h-[60%] bg-orange-600/10 rounded-full blur-[120px] pointer-events-none animate-float"></div>
     <div class="fixed bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-blue-600/5 rounded-full blur-[120px] pointer-events-none animate-float-delayed"></div>
 
-    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 ease-in-out bg-black/50 backdrop-blur-md py-6 md:py-8 border-b border-white/5">
+    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 ease-in-out bg-transparent backdrop-blur-md py-6 md:py-8">
         <div class="max-w-7xl mx-auto flex items-center justify-between px-6 md:px-12">
             <a href="#" class="flex items-center">
                 <img src="./dhirah-logo.png" 
@@ -140,7 +190,7 @@
             </button>
         </div>
 
-        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-black/90 backdrop-blur-xl border-t border-white/10 shadow-2xl">
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-black border-t border-white/10 shadow-2xl">
             <div class="flex flex-col items-start pl-8 py-8 gap-6 text-[18px] font-bold text-[#9ca3af]">
                 <a href="#aboutus" class="hover:text-white transition-colors w-full text-left" onclick="toggleMobileMenu()">About Us</a>
                 <a href="#pathways" class="hover:text-white transition-colors w-full text-left" onclick="toggleMobileMenu()">What We Do</a>
@@ -388,7 +438,7 @@
         </div>
     </section>
 
-    <section class="py-32 px-6 bg-[#0a0a0a] border-t border-white/5 relative overflow-hidden">
+    <section class="dyh-contact-section border-t border-white/5 relative overflow-hidden">
         <div class="max-w-4xl mx-auto text-center reveal relative z-10">
             <h2 class="text-4xl md:text-5xl font-bold mb-6 tracking-tight">
                 Let's <span class="text-cyan-400">Talk</span>
@@ -400,22 +450,22 @@
             </p>
 
             <div class="grid md:grid-cols-2 gap-6">
-                <div class="bg-gradient-to-b from-[#1a1a1a] to-black border border-white/5 rounded-[2rem] p-12 flex flex-col items-center justify-center group hover:border-yellow-500/30 transition-all duration-500 shadow-2xl hover:shadow-yellow-900/10">
-                    <div class="w-14 h-14 rounded-full bg-yellow-500/10 flex items-center justify-center text-yellow-500 mb-6 group-hover:scale-110 group-hover:bg-yellow-500/20 transition-all duration-300">
+                <div class="dyh-contact-card">
+                    <div class="dyh-contact-icon">
                         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.44-5.15-3.75-6.59-6.59l1.97-1.57c.26-.26.35-.65.24-1.01A11.36 11.36 0 009.18 4.35c-.2-.23-.48-.35-.77-.35H4.53c-.57 0-1.04.46-1.04 1.04C3.49 14.54 12.96 24 22.46 24c.58 0 1.04-.47 1.04-1.04v-3.88c0-.29-.13-.57-.35-.77a11.4 11.4 0 00-3.14-2.93z"/>
                         </svg>
                     </div>
-                    <p class="text-[10px] font-bold tracking-[0.2em] text-gray-500 uppercase mb-3 group-hover:text-gray-400 transition-colors">Call Us Anytime</p>
-                    <p class="text-2xl font-bold text-white tracking-tight group-hover:text-yellow-500 transition-colors cursor-pointer">+91 98765 43210</p>
+                    <p class="text-[15px] font-bold tracking-[0.2em] text-gray-500 uppercase mb-3 transition-colors">Call Us Anytime</p>
+                    <p class="text-2xl font-bold text-white tracking-tight hover:text-yellow-500 transition-colors cursor-pointer">+91 98765 43210</p>
                 </div>
 
-                <div class="bg-gradient-to-b from-[#1a1a1a] to-black border border-white/5 rounded-[2rem] p-12 flex flex-col items-center justify-center group hover:border-yellow-500/30 transition-all duration-500 shadow-2xl hover:shadow-yellow-900/10">
-                    <div class="w-14 h-14 rounded-full bg-yellow-500/10 flex items-center justify-center text-yellow-500 mb-6 group-hover:scale-110 group-hover:bg-yellow-500/20 transition-all duration-300">
+                <div class="dyh-contact-card">
+                    <div class="dyh-contact-icon">
                         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
                     </div>
-                    <p class="text-[10px] font-bold tracking-[0.2em] text-gray-500 uppercase mb-3 group-hover:text-gray-400 transition-colors">Email Inquiries</p>
-                    <p class="text-2xl font-bold text-white tracking-tight group-hover:text-yellow-500 transition-colors cursor-pointer">hello@dhirah.org</p>
+                    <p class="text-[15px] font-bold tracking-[0.2em] text-gray-500 uppercase mb-3 transition-colors">Email Inquiries</p>
+                    <p class="text-2xl font-bold text-white tracking-tight hover:text-yellow-500 transition-colors cursor-pointer">hello@dhirah.org</p>
                 </div>
             </div>
         </div>
